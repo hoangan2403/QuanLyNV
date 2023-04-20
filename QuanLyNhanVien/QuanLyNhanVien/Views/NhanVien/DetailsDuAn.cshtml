@@ -1,0 +1,65 @@
+﻿@model QuanLyNhanVien.Models.DuAn
+@{
+    var nhanVienList = ViewBag.NhanVienList as SelectList;
+}
+
+
+<div>
+    <h4>Chi tiết dự án</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenDuAn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenDuAn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThongTinDuAn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThongTinDuAn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhuCap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhuCap)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idQuanLy)
+        </dt>
+
+        <dd>
+            @(Model.NhanVien==null?"":Model.NhanVien.HoVaTen)
+        </dd>
+
+    </dl>
+    <table class="table">
+    <tr>
+        <th>
+            Danh Sách Nhân Viên
+        </th>
+    </tr>
+
+    @foreach (var item in nhanVienList)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Text)
+            </td>
+        </tr>
+    }
+    </table>
+</div>
+<p>
+
+    @Html.ActionLink("Edit", "EditDuAn", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

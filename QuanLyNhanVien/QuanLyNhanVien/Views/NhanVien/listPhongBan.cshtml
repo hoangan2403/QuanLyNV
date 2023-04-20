@@ -1,0 +1,33 @@
+﻿@model IEnumerable<QuanLyNhanVien.Models.PhongBan>
+<h2>Danh Sách Phòng Ban</h2>
+<p>
+    @Html.ActionLink("Thêm Phòng Ban", "CreatePhongBan")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenPhongBan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idTruongPhong)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenPhongBan)
+        </td>
+        <td>
+            @(item.NhanVien1!=null? item.NhanVien1.HoVaTen:"Không có trưởng phòng")
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditPhongBan", new { id=item.id }) |
+            @Html.ActionLink("Details", "DetailsPhongBan", new { id=item.id }) |
+            @Html.ActionLink("Delete", "DeletePhongBan", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

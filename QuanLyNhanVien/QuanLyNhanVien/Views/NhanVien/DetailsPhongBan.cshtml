@@ -1,0 +1,46 @@
+﻿@model QuanLyNhanVien.Models.PhongBan
+@{
+    var nhanVienList = ViewBag.NhanVienList as SelectList;
+}
+<div>
+    <h2>Chi Tiết Phòng Ban</h2>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenPhongBan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenPhongBan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idTruongPhong)
+        </dt>
+
+        <dd>
+            @(Model.NhanVien1==null?"":Model.NhanVien1.HoVaTen)
+        </dd>
+
+    </dl>
+    <table class="table">
+        <tr>
+            <th>
+                Danh Sách Nhân Viên
+            </th>
+        </tr>
+
+        @foreach (var item in nhanVienList)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Text)
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditPhongBan", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "listPhongBan")
+</p>

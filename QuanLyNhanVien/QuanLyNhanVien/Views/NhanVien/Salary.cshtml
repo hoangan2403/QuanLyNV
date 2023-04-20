@@ -1,0 +1,80 @@
+﻿@model QuanLyNhanVien.Models.NhanVien
+
+<div>
+    <h4>Tính Lương của Nhân Viên</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HoVaTen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoVaTen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GioiTinh)
+        </dt>
+
+        <dd>
+            @(Model.GioiTinh?"Nam":"Nữ")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idChucVu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idChucVu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ibPhongBan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ibPhongBan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idDuAn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idDuAn)
+        </dd>
+        <dt>
+            Lương Cứng
+        </dt>
+
+        <dd>
+            @(Model.ChucVu==null?"":Model.ChucVu.Luong.ToString())
+        </dd>
+        <dt>
+            Thưởng Dự Án: @(Model.DuAn1!=null?Model.DuAn1.TenDuAn:"Không tham gia dự án")
+        </dt>
+
+        <dd>
+            @(Model.DuAn1 != null ? Model.DuAn1.PhuCap==null?"0Đ":Model.DuAn1.PhuCap.ToString():"0D")
+        </dd>
+        <dt>
+            Tổng Luong Tháng
+        </dt>
+
+        <dd>
+            @(Model.DuAn1==null? Model.ChucVu.Luong.ToString():(Model.DuAn1.PhuCap==null? Model.ChucVu.Luong.ToString():(Model.DuAn1.PhuCap + Model.ChucVu.Luong).ToString()))
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

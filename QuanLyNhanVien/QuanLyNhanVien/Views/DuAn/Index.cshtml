@@ -1,0 +1,45 @@
+﻿@model IEnumerable<QuanLyNhanVien.Models.DuAn>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenDuAn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThongTinDuAn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhuCap)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idQuanLy)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenDuAn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThongTinDuAn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhuCap)
+        </td>
+        <td>
+            @(item.NhanVien==null?"":item.NhanVien.HoVaTen)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

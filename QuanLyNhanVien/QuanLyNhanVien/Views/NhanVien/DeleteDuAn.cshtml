@@ -1,0 +1,70 @@
+﻿@model QuanLyNhanVien.Models.DuAn
+@{
+    var nhanVienList = ViewBag.NhanVienList as SelectList;
+}
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Xóa dự án @(Model.TenDuAn)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenDuAn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenDuAn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThongTinDuAn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThongTinDuAn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhuCap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhuCap)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idQuanLy)
+        </dt>
+
+        <dd>
+            @(Model.NhanVien!=null?Model.NhanVien.HoVaTen: "Không Có Quản Lý")
+        </dd>
+
+    </dl>
+    <table class="table">
+        <tr>
+            <th>
+                Danh Sách Nhân Viên
+            </th>
+        </tr>
+
+        @foreach (var item in nhanVienList)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Text)
+                </td>
+            </tr>
+        }
+    </table>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <input type="hidden" value="@Model.id" id="id" />
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "ListDUAN")
+        </div>
+    }
+</div>

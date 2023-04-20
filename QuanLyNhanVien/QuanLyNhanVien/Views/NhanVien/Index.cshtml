@@ -1,0 +1,82 @@
+﻿@model IEnumerable<QuanLyNhanVien.Models.NhanVien>
+
+@{
+    ViewBag.Title = "Dánh Sách Nhân Viên";
+}
+
+<h2>Trang Chủ Quản Lý Nhân Viên</h2>
+
+<p>
+    @Html.ActionLink("Thêm Nhân Viên Mới", "Create")
+</p>
+<p>
+    @Html.ActionLink("Danh Sách Dự Án", "listDUAN")
+</p>
+<p>
+    @Html.ActionLink("Danh Sách Phòng Ban", "listPhongBan")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.HoVaTen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GioiTinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoDienThoai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoCanCuoc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idChucVu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ibPhongBan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idDuAn)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.HoVaTen)
+        </td>
+        <td>
+            @(item.GioiTinh?"Nam":"Nữ")
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoDienThoai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoCanCuoc)
+        </td>
+        <td>
+            @(item.ChucVu==null?"":item.ChucVu.TenChucVu)
+        </td>
+        <td>
+            @(item.PhongBan!=null?item.PhongBan.TenPhongBan:" Chưa có phòng ban")
+        </td>
+        <td>
+            @(item.idDuAn!=null? item.DuAn1.TenDuAn:"Không tham gia dự ")
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.id }) |
+            @Html.ActionLink("Tính Lương", "Salary", new { id = item.id })
+        </td>
+    </tr>
+}
+
+</table>

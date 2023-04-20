@@ -1,0 +1,97 @@
+﻿@model QuanLyNhanVien.Models.NhanVien
+
+<div>
+    <h4>Chi tiết nhân viên</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HoVaTen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoVaTen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GioiTinh)
+        </dt>
+
+        <dd>
+            @(Model.GioiTinh?"Nam":"Nữ")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoDienThoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoDienThoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoCanCuoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoCanCuoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenDangNhap)
+        </dt>
+
+        <dd>
+            @(Model.MatKhau==null?"Không Có Tài Khoản": Model.TenDangNhap)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MatKhau)
+        </dt>
+
+        <dd>
+            @(Model.MatKhau==null?"":Model.MatKhau)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idChucVu)
+        </dt>
+
+        <dd>
+            @(Model.ChucVu==null?"":Model.ChucVu.TenChucVu)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ibPhongBan)
+        </dt>
+
+        <dd>
+            @(Model.PhongBan==null?"":Model.PhongBan.TenPhongBan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idDuAn)
+        </dt>
+
+        <dd>
+            @(Model.DuAn==null?"":Model.DuAn1.TenDuAn)
+        </dd>
+        <dt>
+            Lương Cứng
+        </dt>
+
+        <dd>
+            @(Model.ChucVu==null?"":Model.ChucVu.Luong.ToString())
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
