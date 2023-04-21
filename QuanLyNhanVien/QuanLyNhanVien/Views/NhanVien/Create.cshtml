@@ -24,12 +24,15 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.GioiTinh, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2" for="gioitinh">Giới tính</label>
             <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.GioiTinh)
-                    @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger" })
-                </div>
+                <label class="radio-inline">
+                    @Html.RadioButtonFor(model => model.GioiTinh, "Nam") Nam
+                </label>
+                <label class="radio-inline">
+                    @Html.RadioButtonFor(model => model.GioiTinh, "Nữ") Nữ
+                </label>
+                @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger" })
             </div>
         </div>
 

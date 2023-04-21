@@ -33,7 +33,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.idChucVu)
+            @(Model.ChucVu.TenChucVu)
         </dd>
 
         <dt>
@@ -41,7 +41,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ibPhongBan)
+            @(Model.PhongBan!=null?Model.PhongBan.TenPhongBan:"Không có phòng ban")
         </dd>
 
         <dt>
@@ -49,7 +49,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.idDuAn)
+            @(Model.DuAn!=null?Model.DuAn1.TenDuAn:"Không tham Gia Dự án")
         </dd>
         <dt>
             Lương Cứng

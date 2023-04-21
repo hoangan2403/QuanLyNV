@@ -69,4 +69,12 @@
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhongBan> PhongBan1 { get; set; }
     }
+    public class LoginModel
+    {
+        [Required(ErrorMessage = "Vui lòng nhập tên đăng nhập")]
+        public string Username { get; set; }
+
+        [Required(ErrorMessage = "Vui lòng nhập mật khẩu")]
+        public string Password { get; set; }
+    }
 }

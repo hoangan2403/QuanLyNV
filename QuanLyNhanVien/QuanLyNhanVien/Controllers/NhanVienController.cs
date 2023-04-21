@@ -11,6 +11,30 @@ namespace QuanLyNhanVien.Controllers
     public class NhanVienController : Controller
     {
         // GET: NhanVien
+        public ActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Login(LoginModel model)
+        {
+            var context = new DBNhanVienContext();
+            var listNhanVien = context.NhanVien.Where(nv => nv.LaQuanTri);
+            if (ModelState.IsValid)
+            {
+                foreach (var nv in listNhanVien)
+                {
+                    if(model.Username==nv.TenDangNhap && model.Password == nv.MatKhau)
+                    {
+                        return RedirectToAction("Index");
+                    }
+                }
+                ModelState.AddModelError("", "Tên đăng nhập hoặc mật khẩu không đúng");
+            }
+
+            return View(model);
+        }
+        // GET: NhanVien/Index
         public ActionResult Index()
         {
             var listNhanVien = new DBNhanVienContext().NhanVien.ToList();
@@ -23,6 +47,36 @@ namespace QuanLyNhanVien.Controllers
             var context = new DBNhanVienContext();
             var detail = context.NhanVien.Find(id);
             return View(detail);
+        }
+
+        public ActionResult Permission(int id)
+        {
+            var context = new DBNhanVienContext();
+            var editing = context.NhanVien.Find(id);
+            return View(editing);
+        }
+
+        // POST: NhanVien/Permissrion/5
+        [HttpPost]
+        public ActionResult Permission(NhanVien model)
+        {
+            try
+            {
+                // TODO: Add update logic here
+                var context = new DBNhanVienContext();
+                var oldItem = context.NhanVien.Find(model.id);
+                oldItem.TenDangNhap = model.TenDangNhap;
+                oldItem.MatKhau = model.MatKhau;
+                oldItem.LaChuyenVien = model.LaChuyenVien;
+                oldItem.LaQuanTri = model.LaQuanTri;
+                oldItem.LaNhanVien = model.LaNhanVien;
+                context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
         }
 
         public ActionResult Salary(int id)
@@ -203,6 +257,7 @@ namespace QuanLyNhanVien.Controllers
                 var oldItem = context.DuAn.Find(model.id);
                 oldItem.TenDuAn = model.TenDuAn;
                 oldItem.ThongTinDuAn = model.ThongTinDuAn;
+                oldItem.PhuCap = model.PhuCap;
                 oldItem.idQuanLy = model.idQuanLy;
                 context.SaveChanges();
                 return RedirectToAction("Index");

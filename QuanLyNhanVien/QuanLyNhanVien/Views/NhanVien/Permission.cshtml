@@ -1,0 +1,107 @@
+﻿@model QuanLyNhanVien.Models.NhanVien
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Phân Quyền Cho nhân viên</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.id)
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HoVaTen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoVaTen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GioiTinh)
+        </dt>
+
+        <dd>
+            @(Model.GioiTinh?"Nam":"Nữ")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idChucVu)
+        </dt>
+
+        <dd>
+            @(Model.ChucVu.TenChucVu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ibPhongBan)
+        </dt>
+
+        <dd>
+            @(Model.PhongBan!=null?Model.PhongBan.TenPhongBan:"Không có phòng ban")
+        </dd>
+
+      
+    </dl>
+    <div class="form-group">
+        @Html.LabelFor(model => model.TenDangNhap, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.TenDangNhap, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TenDangNhap, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.MatKhau, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.LaQuanTri, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.LaQuanTri)
+                @Html.ValidationMessageFor(model => model.LaQuanTri, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.LaChuyenVien, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.LaChuyenVien)
+                @Html.ValidationMessageFor(model => model.LaChuyenVien, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.LaNhanVien, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.LaNhanVien)
+                @Html.ValidationMessageFor(model => model.LaNhanVien, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

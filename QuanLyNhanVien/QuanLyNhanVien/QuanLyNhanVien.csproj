@@ -197,6 +197,8 @@
     <Content Include="Views\NhanVien\EditPhongBan.cshtml" />
     <Content Include="Views\NhanVien\DetailsPhongBan.cshtml" />
     <Content Include="Views\NhanVien\DeletePhongBan.cshtml" />
+    <Content Include="Views\NhanVien\Login.cshtml" />
+    <Content Include="Views\NhanVien\Permission.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
